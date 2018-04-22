@@ -26,7 +26,7 @@ RandomAccessIterator selectMaxIter3(RandomAccessIterator iter1, RandomAccessIter
 }
 
 template <typename RandomAccessIterator>
-void Addjust(RandomAccessIterator begin, RandomAccessIterator end, RandomAccessIterator cur)
+void Adjust(RandomAccessIterator begin, RandomAccessIterator end, RandomAccessIterator cur)
 {
     auto pos = cur - begin;
     auto left = begin + pos * 2 + 1;
@@ -49,7 +49,7 @@ void Addjust(RandomAccessIterator begin, RandomAccessIterator end, RandomAccessI
     if (maxPos != cur )
     {
         std::swap(*cur, *maxPos);
-        Addjust(begin, end, maxPos);
+        Adjust(begin, end, maxPos);
     }
 }
 
@@ -58,7 +58,7 @@ void MakeHeap(RandomAccessIterator begin, RandomAccessIterator end)
 {
     for(auto cur=end-1; cur >= begin; --cur)
     {
-        Addjust(begin, end, cur);
+        Adjust(begin, end, cur);
     }
 }
 
@@ -70,7 +70,7 @@ void HeapSort(RandomAccessIterator begin, RandomAccessIterator end)
     for (RandomAccessIterator last=end-1; last > begin; --last)
     {
         std::swap(*begin, *last);
-        Addjust(begin, last, begin);
+        Adjust(begin, last, begin);
     }
 }
 
